@@ -4,7 +4,7 @@ class Model {
 
 
   constructor() {
-    this.schema = this.schema;
+    // this.schema = this.schema;
     console.log('this.schema', this.schema);
   }
 

@@ -5,7 +5,6 @@ const router = express.Router();
 
 
 // Models
-// TODO: Pull these in (or create them)!
 const Products = require('../../models/products/products.js');
 const products = new Products();
 
@@ -40,7 +39,6 @@ function getCategories(request, response, next) {
 }
 
 function getCategory(request, response, next) {
-  // expects an array with the one matching record from the model
   categories.get(request.params.id)
     .then(result => response.status(200).json(result[0]))
     .catch(next);
@@ -48,7 +46,6 @@ function getCategory(request, response, next) {
 
 function postCategories(request, response, next) {
   console.log(request.body);
-  // expects the record that was just added to the database
   categories.post(request.body)
     .then(result => {
       console.log('after mongo.js record is :',result);
@@ -59,7 +56,6 @@ function postCategories(request, response, next) {
 
 
 function putCategories(request, response, next) {
-  // expects the record that was just updated in the database
   categories.put(request.params.id, request.body)
     .then(result => response.status(200).json(result[0]))
     .catch(next);
@@ -87,14 +83,12 @@ function getProducts(request, response, next) {
 }
 
 function getProduct(request, response, next) {
-  // expects an array with one object in it
   products.get(request.params.id)
     .then(result => response.status(200).json(result[0]))
     .catch(next);
 }
 
 function postProducts(request, response, next) {
-  // expects the record that was just added to the database
   products.post(request.body)
     .then(result => response.status(200).json(result))
     .catch(next);
@@ -102,17 +96,15 @@ function postProducts(request, response, next) {
 
 
 function putProducts(request, response, next) {
-  // expects the record that was just updated in the database
   products.put(request.params.id, request.body)
     .then(result => response.status(200).json(result))
     .catch(next);
 }
 
 function deleteProducts(request, response, next) {
-  // Expects no return value (the resource should be gone)
   products.delete(request.params.id)
     .then(result => response.status(200).json(result))
     .catch(next);
-};
+}
 
 module.exports = router;
