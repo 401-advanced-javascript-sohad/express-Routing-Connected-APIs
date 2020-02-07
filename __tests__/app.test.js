@@ -46,7 +46,7 @@ describe('api server', () => {
       .post('/api/v1/categories')
       .send(obj)
       .then(results => {
-         mockRequest.get(`/api/v1/categories/${results.body._id}`)
+        mockRequest.get(`/api/v1/categories/${results.body._id}`)
           .then(list => {
             expect(list.status).toBe(200);
             expect(list.body.name).toEqual(list.body.name);
